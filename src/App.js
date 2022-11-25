@@ -5,7 +5,7 @@ function App() {
   return (
     <div>
       <NavBar />
-      <ItemListContainer greeting = {"Bienvenidos a REPLAY!"} />
+      <ItemListContainer greeting = {"Bienvenidos a Replay K-Pop Store!"} />
     </div>
   );
 }

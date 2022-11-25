@@ -3,7 +3,7 @@ import "./NavBar.css";
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-md p-1 align-bottom fondoColor">
+    <nav className="navbar navbar-expand-md px-3 py-1 align-bottom fondoColor">
         <div className="container-fluid">
             <a className="navbar-brand" href="#">
             <img src="https://res.cloudinary.com/dx8uk8mjq/image/upload/v1669349897/Replay_Logo_2_z7voxh.png" alt="Logo" className="logoNavBar"/>
