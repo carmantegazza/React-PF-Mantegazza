@@ -1,0 +1,11 @@
+.logoNavBar {
+    height: 20vh;
+}
+
+.fondoColor {
+    background-color: #ebebeb;
+}
+
+.nav-link:hover {
+    color: #cb6ce6;
+}
