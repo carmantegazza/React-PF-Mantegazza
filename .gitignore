@@ -1,5 +1,5 @@
 # not used components
-src/components/ItemCount/
+ItemCount/
 
 # dependencies
 /node_modules
