@@ -24,7 +24,7 @@ const ItemListContainer = () => {
         setItems(res)
       })
       .catch((err) => {
-        console.log("se rechazo")
+        console.log("error en la respuesta de pedido de productos por categoria")
       })
 
   }, [categoryName])
