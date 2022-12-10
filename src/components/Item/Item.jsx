@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import { products } from "../../productsMock";
 
 const Item = ({element}) => {
 	

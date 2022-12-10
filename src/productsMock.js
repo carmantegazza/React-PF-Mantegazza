@@ -35,6 +35,7 @@ export const products = [
 		description: "Seulgi 1st Mini Album",
 		category: "soloist",
 		img: "https://res.cloudinary.com/dx8uk8mjq/image/upload/v1669841762/seulgi-album-seulgi-28-reasons-1st-mini-album-case-ver-34408903344309_400x_doa5mu.jpg",
+
 	},
 	{
 		id: 5,
