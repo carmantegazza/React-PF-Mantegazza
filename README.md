@@ -6,5 +6,4 @@
 
 ***
 ### Notas para el corrector
-> CoderHouse #43635
 > **[GIF de navegabilidad]** (https://drive.google.com/file/d/1oB0GT5qy307SK9fdp-GsEbaOr8SpydPI/view?usp=sharing)
