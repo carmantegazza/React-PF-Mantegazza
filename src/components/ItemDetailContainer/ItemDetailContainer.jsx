@@ -1,6 +1,5 @@
-
-import React, { useEffect, useState } from 'react'
-import { products } from '../../productsMock'
+import { useEffect, useState } from "react"
+import { products } from "../../productsMock"
 import { useParams } from "react-router-dom"
 import ItemDetail from "../ItemDetail/ItemDetail"
 
@@ -18,7 +17,7 @@ const ItemDetailContainer = () => {
   }, [id])
 
   return (
-    <div className='row justify-content-center mt-1'>
+    <div className="row justify-content-center mt-1">
       <ItemDetail product={ product } />
     </div>
   )
