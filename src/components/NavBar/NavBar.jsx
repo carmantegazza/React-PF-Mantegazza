@@ -1,19 +1,20 @@
-import CartWidget from "../CartWidget/CartWidget";
 import "./NavBar.css";
+import { Link } from "react-router-dom"
+import CartWidget from "../CartWidget/CartWidget";
 
 const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-md px-3 py-1 align-bottom fondoColor">
         <div className="container-fluid">
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" to="/">
             <img src="https://res.cloudinary.com/dx8uk8mjq/image/upload/v1669349897/Replay_Logo_2_z7voxh.png" alt="Logo" className="logoNavBar"/>
-            </a>
+            </Link>
         </div>
         <div className="collapse navbar-collapse">
             <div className="navbar-nav">
-                    <a className= "nav-link mx-3" href="#albums">Albums</a>
-                    <a className= "nav-link mx-3" href="#dvds">DVDs</a>
-                    <a className= "nav-link mx-3" href="#merch">Merch</a>
+                    <Link className= "nav-link mx-3" to="/category/girlGroups">Girl Groups</Link>
+                    <Link className= "nav-link mx-3" to="/category/boyGroups">Boy Groups</Link>
+                    <Link className= "nav-link mx-3" to="/category/soloist">Soloist</Link>
             </div>
         </div>
         <div className="container-fluid justify-content-end">
