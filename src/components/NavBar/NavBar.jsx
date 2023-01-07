@@ -10,14 +10,14 @@ const NavBar = () => {
             <img src="https://res.cloudinary.com/dx8uk8mjq/image/upload/v1669349897/Replay_Logo_2_z7voxh.png" alt="Logo" className="logoNavBar"/>
             </Link>
         </div>
-        <div className="collapse navbar-collapse">
+
             <div className="navbar-nav">
                     <Link className= "nav-link mx-3" to="/category/girlGroups">Girl Groups</Link>
                     <Link className= "nav-link mx-3" to="/category/boyGroups">Boy Groups</Link>
                     <Link className= "nav-link mx-3" to="/category/soloist">Soloist</Link>
                     <Link className= "nav-link mx-3" to="/sale">Sale</Link>
             </div>
-        </div>
+
         <div className="container-fluid justify-content-end">
             <CartWidget />
         </div>

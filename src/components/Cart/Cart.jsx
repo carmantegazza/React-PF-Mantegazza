@@ -30,7 +30,7 @@ const Cart = () => {
                 <tr>
                     <th scope="row"></th>
                     <td>Order Total:</td>
-                    <td>{ getTotalPrice() > 0 ? getTotalPrice() : "No items yet"}</td>
+                    <td>{ getTotalPrice() > 0 ? "$"+getTotalPrice() : "No items yet"}</td>
                 </tr>
             </tbody>
         </table>    
