@@ -1,7 +1,11 @@
 import { useState } from "react"
+import { useEffect } from "react"
 
-const ItemCount = ({ stock, initial }) => {
+const ItemCount = ({ stock, initial = 1, onAdd}) => {
   const [counter, setCounter] = useState(initial)
+
+  useEffect ( () => {
+    setCounter(initial) }, [initial])
 
   const increment = () => {
     if (counter < stock) {
@@ -13,10 +17,6 @@ const ItemCount = ({ stock, initial }) => {
     if (counter > initial) {
       setCounter(counter - 1)
     }
-  }
-
-  const onAdd = ( quantity ) => {
-    console.log("You added", quantity, "albums to the cart!")
   }
 
   return (

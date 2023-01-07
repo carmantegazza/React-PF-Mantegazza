@@ -15,6 +15,7 @@ const NavBar = () => {
                     <Link className= "nav-link mx-3" to="/category/girlGroups">Girl Groups</Link>
                     <Link className= "nav-link mx-3" to="/category/boyGroups">Boy Groups</Link>
                     <Link className= "nav-link mx-3" to="/category/soloist">Soloist</Link>
+                    <Link className= "nav-link mx-3" to="/sale">Sale</Link>
             </div>
         </div>
         <div className="container-fluid justify-content-end">
