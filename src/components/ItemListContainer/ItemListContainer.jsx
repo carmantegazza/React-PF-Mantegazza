@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom"
 import { products } from "../../productsMock"
 import ItemList from "../ItemList/ItemList"
 
+import { getDocs, collection } from "firebase/firestore"
+
 const ItemListContainer = () => {
   const { categoryName } = useParams()
 
