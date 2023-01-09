@@ -1,7 +1,9 @@
 import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
 import ItemCount from "../ItemCount/ItemCount"
-import ItemOption from "../ItetmOption/ItemOption"
+import ItemDetailStock from "../ItemDetailStock/ItemDetailStock"
+import ItemSaleBadge from "../ItemSaleBadge/ItemSaleBadge"
+
 
 const ItemDetail = ( {product} ) => {
 
@@ -15,18 +17,16 @@ const ItemDetail = ( {product} ) => {
 
   const quantity = getQuantityById(product.id)
 
-  const hurryUpText = "Hurry up! Only few left!"
-
   return (
     <div className="col-sm-8 mt-3 p-2">
       <div className="card text-center">
+      {product.sale === true && <ItemSaleBadge/>}
         <div className="card-body">
-           <h2 className="card-title">{product.name}
-           {product.sale === true && <span className="badge text-light float-end fs-5 colorMarcaSecundario">SALE!</span>}</h2>
+           <h2 className="card-title">{product.name}</h2>
           <div className="card-text">{product.description}</div>
         <h3>${product.price}</h3>
         <ItemCount onAdd={onAdd} stock={product.stock} initial={quantity} />
-        <p>In stock: {product.stock} <span className="fst-italic">{product.stock <= 3 && hurryUpText}</span></p>
+        <ItemDetailStock stock={product.stock}/>
         <img className="img-fluid" src={product.contentImg} alt="" />
         </div>
       </div>
