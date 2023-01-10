@@ -1,44 +1,80 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { CartContext } from "../../context/CartContext"
-import CartItem from "../CartItem/CartItem"
-//import NoInfo from "../NoInfo/NoInfo"
-import Error from "../Error/Error"
+
+import { collection, doc, getDoc } from "firebase/firestore"
+import { db } from "../../firebaseConfig"
+
 import "../ItemCount/ItemCount.css"
+
+import CartItem from "../CartItem/CartItem"
+import Error from "../Error/Error"
+import Form from "../Form/Form"
+import Orders from "../Orders/Orders"
+import CartButtonKeepShopping from "../CartButtonKeepShopping/CartButtonKeepShopping"
+import CartButtonCheckout from "../CartButtonCheckout/CartButtonCheckout"
+import CartButtonClearCart from "../CartButtonClearCart/CartButtonClearCart"
+import CartTotalsTable from "../CartTotalsTable/CartTotalsTable"
 
 
 const Cart = () => {
-    const { cart, clearCart, getTotalPrice, getItemsTotal } = useContext(CartContext)
+    const { cart, isCartEmpty } = useContext(CartContext)
+
+    const [buy, setBuy] = useState(false)
+    const [orderId, setOrderId] = useState(null)
+  
+    const [order, setOrder] = useState({})
+  
+    const openForm = () => {
+      if (cart.length > 0) {
+        setBuy(true)
+      } else {
+        alert("no se puede comprar la nada")
+      }
+    }
+  
+    useEffect(() => {
+      if (orderId) {
+        const orderCollection = collection(db, "orders")
+        const ref = doc(orderCollection, orderId)
+  
+        getDoc(ref).then((res) => {
+          setOrder({
+            id: res.id,
+            ...res.data(),
+          })
+        })
+      }
+    }, [orderId])
+
+    if (orderId) {
+        return (
+          <div>
+            <h1>tu orden de compra es : {orderId}</h1>
+            <Orders order={order} />
+    
+            <Link to={"/"}>Volver a comprar</Link>
+          </div>
+        )
+      }
   
     return (
       <div className="container my-3">
             <div className="row">
+              <ul className="list-group">
                 {cart.map((item) => (
                     <CartItem key={item.id} item={item} />
                 ))}   
                 
-                { cart.length < 1 && <Error /> }
+                { isCartEmpty() == true && <Error /> }
+                </ul>
             </div>
-   
-        <table className="table">
-            <tbody>
-                <tr>
-                    <th scope="row"></th>
-                    <td>Quantity:</td>
-                    <td>{ getItemsTotal() > 0 ? getItemsTotal() : "No items yet"}</td>
-                </tr>
-                <tr>
-                    <th scope="row"></th>
-                    <td>Order Total:</td>
-                    <td>{ getTotalPrice() > 0 ? "$"+getTotalPrice() : "No items yet"}</td>
-                </tr>
-            </tbody>
-        </table>    
+          {isCartEmpty() != true && <CartTotalsTable />}
           <div className="row">
               <div className="d-grid gap-2 col-6 mx-auto">
-                <button className="btn btn-outline-dark text-light colorMarcaSecundario">Proceed to checkout</button>
-                <button className="btn btn-outline-dark"><Link to={`/`}>Keep shopping!</Link></button>
-                <button className="btn btn-outline-dark" onClick={() => clearCart()}>Clear cart</button>
+                <CartButtonKeepShopping />
+                {isCartEmpty() != true &&<CartButtonCheckout />}
+                {isCartEmpty() != true && <CartButtonClearCart />}  
               </div>
           </div>
     </div>

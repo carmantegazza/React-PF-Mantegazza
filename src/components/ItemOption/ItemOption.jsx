@@ -1,23 +1,31 @@
-const ItemOption = ( version ) => {
+import { getDoc, collection, query, where } from "firebase/firestore"
+import { db } from "../../firebaseConfig"
+import { useState } from "react"
 
-    const itemVersion = [...version]
 
-    const renderVersions = () => {
-        itemVersion.forEach ((element) => {
-       
-            return  <li class="dropdown-item">{element}</li>
-     
-    })}
+const ItemOption = ( product ) => {
 
-  return (
-    <div class="dropdown">
-  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown link
-  </a>
+const itemCollection = collection( db, "products" )
 
-  <ul class="dropdown-menu"> { renderVersions ()} </ul>
-</div>
-  )
+const [versions, setVersions] = useState({})
+
+const q = query ( itemCollection, where ("id", "==", product))
+getDoc(q)
+.then( (res) => {
+  const itemVersions = res.doc.map(product => {
+    return{
+      ...product.data(),
+      version: product.version
+    }
+  })
+
+  setVersions(itemVersions)
+
+})
+
+return (
+<h2>caca</h2>
+)
 }
 
 export default ItemOption

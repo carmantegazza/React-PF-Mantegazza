@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 
 export const CartContext = createContext()
 
@@ -33,7 +33,10 @@ const CartContextProvider = ({ children }) => {
 
   const clearCart = ()=>{
 
-    setCart( [] )
+    setTimeout (() => {
+      setCart( [] )
+    }, 900)
+
 
   }
 
@@ -72,6 +75,17 @@ const CartContextProvider = ({ children }) => {
 
   }
 
+  const isCartEmpty = () => {
+  
+    let cartIsEmpty
+  
+    if (cart.length == 0) {
+      cartIsEmpty = true
+    }
+  
+    return cartIsEmpty
+   }
+  
 
   const data = {
     cart,
@@ -80,7 +94,8 @@ const CartContextProvider = ({ children }) => {
     getQuantityById,
     getItemsTotal,
     getTotalPrice,
-    deleteProductById
+    deleteProductById,
+    isCartEmpty
   }
 
   return (
@@ -92,5 +107,3 @@ const CartContextProvider = ({ children }) => {
 }
 
 export default CartContextProvider
-
-// addToCart( {} )

@@ -11,9 +11,9 @@ const ItemListContainer = () => {
 
   const [items, setItems] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-
+ 
   useEffect(() => {
-
+    
     setIsLoading(true)
 
     const itemCollection = collection( db, "products" )
@@ -73,7 +73,7 @@ const ItemListContainer = () => {
         setIsLoading(false)
       }, 1500)
 
-  }, [categoryName])
+  }, [categoryName, sale])
 
 
   return (

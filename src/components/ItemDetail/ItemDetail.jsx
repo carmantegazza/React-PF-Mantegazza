@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
 import ItemCount from "../ItemCount/ItemCount"
 import ItemDetailStock from "../ItemDetailStock/ItemDetailStock"
+import ItemOption from "../ItemOption/ItemOption"
 import ItemSaleBadge from "../ItemSaleBadge/ItemSaleBadge"
 
 
