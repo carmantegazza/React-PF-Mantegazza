@@ -1,7 +1,10 @@
-import { useState } from "react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { FaCheck } from 'react-icons/fa'
+import { ToastContainer, toast, Flip } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const ItemCount = ({ stock, initial = 0, onAdd}) => {
+
+const ItemCount = ({ stock, initial = 0, onAdd, name}) => {
   const [counter, setCounter] = useState(initial)
 
   useEffect ( () => {
@@ -30,12 +33,31 @@ const ItemCount = ({ stock, initial = 0, onAdd}) => {
   return disabled
 }
 
+const notify = () => toast(`Agregaste "${name}" al carrito!`, {
+  icon: <FaCheck style={{fontSize: "1rem", color: "#49dfcd",}}/>,
+  transition: Flip,
+  position: "top-right",
+  autoClose: 3000,
+  hideProgressBar: true,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light",
+  });
+
+const addToCartWithToast = () => {
+  onAdd(counter)
+  notify()
+}
+
   return (
     <div className="btn-group p-2">
       <button className="btn btn-outline-dark" onClick={decrement}>-</button>
       <button className="btn" disabled>{counter}</button>
       <button className="btn btn-outline-dark" onClick={increment}>+</button>
-      <button className="btn btn-outline-dark" onClick={() => onAdd(counter)} disabled = {disableAddButton()}>Add to cart!</button>
+      <button className="btn btn-outline-dark" onClick={addToCartWithToast} disabled = {disableAddButton()}>Add to cart!</button>
+      <ToastContainer />
     </div>
   )
 }

@@ -33,9 +33,7 @@ const CartContextProvider = ({ children }) => {
 
   const clearCart = ()=>{
 
-    setTimeout (() => {
-      setCart( [] )
-    }, 900)
+setCart([])
 
 
   }

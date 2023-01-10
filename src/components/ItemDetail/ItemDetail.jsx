@@ -26,7 +26,7 @@ const ItemDetail = ( {product} ) => {
            <h2 className="card-title">{product.name}</h2>
           <div className="card-text">{product.description}</div>
         <h3>${product.price}</h3>
-        <ItemCount onAdd={onAdd} stock={product.stock} initial={quantity} />
+        <ItemCount onAdd={onAdd} name={product.name} stock={product.stock} initial={quantity} />
         <ItemDetailStock stock={product.stock}/>
         <img className="img-fluid" src={product.contentImg} alt="" />
         </div>

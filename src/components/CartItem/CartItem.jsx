@@ -3,11 +3,35 @@ import { CartContext } from "../../context/CartContext"
 
 import "../CartWidget/CartWidget.css";
 
-import { RiDeleteBin6Line } from "react-icons/ri"
+import { FaTrash, FaTimes } from "react-icons/fa"
+
+import { ToastContainer, toast, Flip } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CartItem = ({ item }) => {
 
   const { deleteProductById } = useContext( CartContext )
+
+  const notify = () => toast(`Eliminaste "${item.name}" del carrito!`, {
+    icon: <FaTimes style={{fontSize: "1rem", color: "#49dfcd",}}/>,
+    transition: Flip,
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+    });
+
+  const deleteItemWithToast = () => {
+
+    deleteProductById(item.id)
+    notify()
+
+  }
+
 
   return (
 
@@ -16,13 +40,14 @@ const CartItem = ({ item }) => {
       <span className="ps-5 me-auto">{item.quantity}</span>
       <span className="me-auto">{item.name}</span>
       <span className="pe-5">${item.price}</span>
-      <button className="btn" onClick={()=>deleteProductById(item.id)}>
-          <RiDeleteBin6Line
+      <button className="btn" onClick={deleteItemWithToast}>
+          <FaTrash
           style = {{
               fontSize: "1.8rem",
               color: "#49dfcd",
           }}/>
         </button>
+        <ToastContainer />
     </li>
   )
 }
