@@ -3,23 +3,23 @@ import { CartContext } from "../../context/CartContext"
 
 const CartTotalsTable = () => {
 
-    const { getTotalPrice, getItemsTotal } = useContext(CartContext)
+  const { getTotalPrice, getItemsTotal } = useContext(CartContext)
 
   return (
     <table className="table">
-    <tbody>
+      <tbody>
         <tr>
-            <th scope="row"></th>
-            <td>Cantidad:</td>
-            <td>{getItemsTotal()}</td>
+          <th scope="row"></th>
+          <td>Cantidad:</td>
+          <td>{getItemsTotal()}</td>
         </tr>
         <tr>
-            <th scope="row"></th>
-            <td>Total:</td>
-            <td>{"$" + getTotalPrice()}</td>
+          <th scope="row"></th>
+          <td>Total:</td>
+          <td>{"$" + getTotalPrice()}</td>
         </tr>
-    </tbody>
-</table>  
+      </tbody>
+    </table>  
   )
 }
 

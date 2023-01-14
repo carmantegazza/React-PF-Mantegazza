@@ -1,5 +1,6 @@
 import {Link} from "react-router-dom";
 import "../CartWidget/CartWidget.css"
+import ItemOutOfStockBadge from "../ItemOutOfStockBadge/ItemOutOfStockBadge";
 import ItemSaleBadge from "../ItemSaleBadge/ItemSaleBadge";
 
 const Item = ({element}) => {
@@ -7,7 +8,8 @@ const Item = ({element}) => {
 	return (
 		<div className="col-sm-3 p-2">
 			<div className="card align-content-center">
-				{element.sale === true && <ItemSaleBadge/>}
+				{element.stock === 0 && <ItemOutOfStockBadge />}
+				{element.sale === true && <ItemSaleBadge />}
 				<img src={element.img} alt={element.description} className="card-img-top" />
 				<div className="card-body">
 				<h4 className="text-uppercase">{element.artist}</h4>	

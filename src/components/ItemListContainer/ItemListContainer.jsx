@@ -8,7 +8,6 @@ import { db } from "../../firebaseConfig"
 
 const ItemListContainer = () => {
   const { categoryName, sale } = useParams()
-
   const [items, setItems] = useState([])
   const [isLoading, setIsLoading] = useState(false)
  
@@ -22,7 +21,7 @@ const ItemListContainer = () => {
       const q = query( itemCollection, where( "sale", "==", true ) )
       getDocs(q)
       .then( (res) => {
-        const products = res.docs.map( product => { // [{}, {}]
+        const products = res.docs.map( product => {
           return {
             
             ...product.data(),
@@ -38,7 +37,7 @@ const ItemListContainer = () => {
       const q = query( itemCollection, where( "category" , "==" , categoryName ) )
       getDocs(q)
       .then( (res) => {
-        const products = res.docs.map( product => { // [{}, {}]
+        const products = res.docs.map( product => { 
           return {
             
             ...product.data(),
@@ -54,7 +53,7 @@ const ItemListContainer = () => {
 
       getDocs(itemCollection)
       .then( (res) => {
-        const products = res.docs.map( product => { // [{}, {}]
+        const products = res.docs.map( product => { 
           return {
             
             ...product.data(),

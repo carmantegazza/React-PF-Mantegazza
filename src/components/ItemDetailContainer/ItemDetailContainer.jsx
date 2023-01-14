@@ -13,9 +13,6 @@ const ItemDetailContainer = () => {
 
   useEffect( ()=>{
 
-    // const productSelected = products.find( producto => producto.id === parseInt(id) )
-    // setProduct(productSelected)
-
     const itemCollection = collection(db, "products")
     const ref = doc( itemCollection, id )
 
