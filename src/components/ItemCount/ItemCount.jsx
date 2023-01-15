@@ -21,7 +21,7 @@ const ItemCount = ({ stock, initial = 0, onAdd, name}) => {
     counter > initial && setCounter(counter - 1) 
   }
 
-  const notify = () => toast(`Agregaste "${name}" al carrito!`, {
+  const notify = () => toast(`Agregaste ${name.toUpperCase()} al carrito!`, {
     icon: <FaCheck style={{fontSize: "1rem", color: "#49dfcd",}}/>,
     transition: Flip,
     position: "top-right",
