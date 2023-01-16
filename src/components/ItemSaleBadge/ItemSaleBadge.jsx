@@ -1,8 +1,6 @@
-
 const ItemSaleBadge = () => {
-
   return (
-    <span className="badge text-light position-absolute m-3 fs-5 colorMarcaSecundario">SALE!</span>
+    <span className="badge position-absolute m-3 fs-5 bgBrandColor2">SALE!</span>
   )
 }
 

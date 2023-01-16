@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react"
 import { CartContext } from "../../context/CartContext"
-
 import { collection, doc, getDoc } from "firebase/firestore"
 import { db } from "../../firebaseConfig"
 
@@ -9,9 +8,9 @@ import CartButtonCheckout from "../CartButtonCheckout/CartButtonCheckout"
 import CartButtonToShopping from "../CartButtonToShopping/CartButtonToShopping"
 import CartDetail from "../CartDetail/CartDetail"
 import Form from "../Form/Form"
-
-import "../ItemCount/ItemCount.css"
 import OrderConfirmation from "../OrderConfirmation/OrderConfirmation"
+
+import "../../styles/styles.css"
 
 const Cart = () => {
   const { cart, clearCart, getTotalPrice, isCartEmpty } = useContext(CartContext)
@@ -24,11 +23,10 @@ const Cart = () => {
   const openForm = () => setBuy(true)
 
   useEffect( () => {
-    isCartEmpty() ? setButtonText("Empeza a comprar!") : setButtonText("Seguir comprando")
+    isCartEmpty ? setButtonText("Empeza a comprar!") : setButtonText("Seguir comprando")
   }, [isCartEmpty])  
 
   useEffect(() => {
-
     if (orderId) {
       const orderCollection = collection(db, "orders")
       const ref = doc(orderCollection, orderId)
@@ -51,7 +49,8 @@ const Cart = () => {
   return (
     <div className="container my-3">
         <CartDetail /> 
-        {buy ? <Form
+        {buy ? 
+        <Form
           order={order}
           cart={cart}
           getTotalPrice={getTotalPrice}
@@ -61,12 +60,13 @@ const Cart = () => {
         <div className="row">
           <div className="d-grid gap-2 col-6 mx-auto">
             <CartButtonToShopping text={buttonText}/>
-            {isCartEmpty() !== true && <CartButtonCheckout onClick={openForm}/>}
-            {isCartEmpty() !== true && <CartButtonClearCart />}  
+            {isCartEmpty !== true && <CartButtonCheckout onClick={openForm}/>}
+            {isCartEmpty !== true && <CartButtonClearCart />}  
           </div>
-        </div>}
+        </div>
+        }
     </div>
   )
 }
   
-  export default Cart
+export default Cart

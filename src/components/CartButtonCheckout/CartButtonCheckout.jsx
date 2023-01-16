@@ -1,7 +1,6 @@
 const CartButtonCheckout = ({onClick}) => {
-
   return (
-    <button className="btn btn-outline-dark" onClick={onClick}>Finalizar compra</button>
+    <button className="btn buttonPrimary" onClick={onClick}>Finalizar compra</button>
     )
 }
 

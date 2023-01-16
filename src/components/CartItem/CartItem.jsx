@@ -1,11 +1,8 @@
 import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
-
 import { FaTrash, FaTimes } from "react-icons/fa"
 import { ToastContainer, toast, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-import "../CartWidget/CartWidget.css";
 
 const CartItem = ({ item }) => {
 
@@ -36,11 +33,7 @@ const CartItem = ({ item }) => {
       <span className="me-auto">{item.name}</span>
       <span className="pe-5">${item.price}</span>
       <button className="btn" onClick={deleteItemWithToast} title={"Eliminar del carrito"}>
-        <FaTrash
-        style = {{
-          fontSize: "1.8rem",
-          color: "#49dfcd",
-        }}/>
+        <FaTrash style = {{fontSize: "1.8rem", color: "#49dfcd"}}/>
       </button>
       <ToastContainer />
     </li>

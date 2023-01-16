@@ -1,24 +1,18 @@
+import { useState, useEffect } from "react"
 
 const ItemDetailStock = ( {stock} ) => {
 
-    let stockText = ""
-    const lowStockText = "Apurate! Ultimas unidades"
-    const noStockText = "Sin stock!"
-
-const stockCheck = () => {
-
-    if ( stock === 0) {
-        stockText = noStockText
-    } else if ( stock <= 5) {
-        stockText = lowStockText
-    }
-
-    return stockText
-
-}
+    const [stockText, setStockTest] = useState()
+    
+    useEffect(() => {    
+        if (stock === 0) {
+        setStockTest("Sin stock")
+        } else if (stock <=5) {
+        setStockTest("Apurate! Solo quedan "+ stock)
+        }}, [stock])
 
     return (
-        <p className="fst-italic">{ stockCheck() }</p>
+        <p className="fst-italic">{stockText}</p>
     )
 }
 

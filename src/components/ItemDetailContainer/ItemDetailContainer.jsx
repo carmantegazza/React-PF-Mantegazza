@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import ItemDetail from "../ItemDetail/ItemDetail"
-
 import { getDoc, doc, collection} from "firebase/firestore"
 import { db } from '../../firebaseConfig'
+
+import Error from "../Error/Error"
+import ItemDetail from "../ItemDetail/ItemDetail"
 
 const ItemDetailContainer = () => {
 
   const [product, setProduct] = useState({})
 
-  const { id } = useParams()
+  console.log(product)
+
+  const {id} = useParams()
 
   useEffect( ()=>{
-
     const itemCollection = collection(db, "products")
-    const ref = doc( itemCollection, id )
+    const ref = doc(itemCollection, id)
 
     getDoc(ref)
     .then( res => {
@@ -30,7 +32,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="row justify-content-center mt-1">
-      <ItemDetail product={ product } />
+      {product.name ? <ItemDetail product={ product } /> : <Error />}
     </div>
   )
 }

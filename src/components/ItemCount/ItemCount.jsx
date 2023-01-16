@@ -44,7 +44,7 @@ const ItemCount = ({ stock, initial = 0, onAdd, name}) => {
       <button className="btn btn-outline-dark" onClick={decrement}>-</button>
       <button className="btn" disabled>{counter}</button>
       <button className="btn btn-outline-dark" onClick={increment}>+</button>
-      <button className="btn btn-outline-dark" onClick={addToCartWithToast} disabled={disabled}>Agregar al carrito!</button>
+      <button className="btn buttonPrimary" onClick={addToCartWithToast} disabled={disabled}>Agregar al carrito!</button>
       <ToastContainer />
     </div>
   )

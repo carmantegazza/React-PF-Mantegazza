@@ -28,8 +28,6 @@ function App() {
 
           <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
 
-          <Route path="/:sale" element={<ItemListContainer />} />
-
           <Route path="*" element={<Error />} />
 
        </Routes>

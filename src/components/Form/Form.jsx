@@ -8,7 +8,6 @@ const Form = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
   const total = getTotalPrice()
   
   const handleChange = (event) => {
-
     const name = event.target.name
     const value = event.target.value
     setUserData(data => ({...data, [name]: value}))
@@ -96,7 +95,7 @@ const Form = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
             />
           </div>
         </div>    
-        <button type="submit" className="btn btn-success float-end px-3 mt-1">Confirmar compra</button>
+        <button type="submit" className="btn float-end px-3 mt-1 buttonPrimary">Confirmar compra</button>
       </form>
     </div>
   )

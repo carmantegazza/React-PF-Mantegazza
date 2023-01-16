@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { createContext, useState } from "react"
 
 export const CartContext = createContext()
@@ -5,6 +6,7 @@ export const CartContext = createContext()
 const CartContextProvider = ({ children }) => {
 
   const [cart, setCart] = useState([])
+  const [isCartEmpty, setIsCartEmpty] = useState()
 
   const addToCart = (element) => {
     if (isInCart(element)) {
@@ -15,83 +17,64 @@ const CartContextProvider = ({ children }) => {
             quantity: element.quantity,
           }
           return newProduct
-          
         } else {
           return product
         }
       })
-
       setCart(newArray)
     } else {
       setCart([...cart, element])
     }
   }
 
+  const clearCart = () => setCart([])
+
+  const deleteProductById = (id) => {
+    const newArray = cart.filter( product => product.id !== id )
+    setCart(newArray)
+  }
+
+  const getItemsTotal = () => {
+    const itemsTotal = cart.reduce ( (items, element) => {
+      return items + (element.quantity)
+    }, 0)
+    return itemsTotal
+  }
+  
+  const getQuantityById = (id) => {
+    const product = cart.find( elemento => elemento.id === id)
+    return product?.quantity
+  }
+  
+  const getTotalPrice = () => {
+    const total = cart.reduce( (acc, element) => {
+      return acc + (element.price * element.quantity)
+    }, 0 )
+    return total
+  }
+  
   const isInCart = (item) => {
     return cart.some((elemento) => elemento.id === item.id)
   }
 
-  const clearCart = ()=>{
-
-    setCart([])
-  }
-
-  const getQuantityById = ( id )=>{
-
-    const product = cart.find( elemento => elemento.id === id)
-
-    return product?.quantity
-
-  }
-
-  const getTotalPrice = ()=>{
-
-      const total = cart.reduce( (acc, element)=>{
-      return acc + (element.price * element.quantity)
-    }, 0 )
-
-    return total
-
-  }
-
-  const getItemsTotal = () => {
-    const itemsTotal = cart.reduce (( items, element) => {
-      return items + (element.quantity)
-    }, 0)
-
-    return itemsTotal
-  }
-
-
-  const deleteProductById = (id)=>{
-
-    const newArray = cart.filter( product => product.id !== id ) // []
-
-    setCart( newArray )
-
-  }
-
-  const isCartEmpty = () => {
-  
-    let cartIsEmpty
-  
-    if (cart.length === 0) {
-      cartIsEmpty = true
+  useEffect(() => {
+    if (cart.length === 0){
+      setIsCartEmpty(true)
+    } else {
+      setIsCartEmpty(false)
     }
+  }, [cart])
   
-    return cartIsEmpty
-   }
-  
-
-  const data = {
-    cart,
+    const data = {
     addToCart,
+    cart,
     clearCart,
-    getQuantityById,
-    getItemsTotal,
-    getTotalPrice,
     deleteProductById,
-    isCartEmpty
+    getItemsTotal,
+    getQuantityById,
+    getTotalPrice,
+    isCartEmpty,
+    isInCart,
   }
 
   return (
