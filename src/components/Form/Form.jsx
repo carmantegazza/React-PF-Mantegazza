@@ -1,17 +1,18 @@
 import { useState } from "react"
-import {
-  addDoc,
-  collection,
-  serverTimestamp,
-  doc,
-  updateDoc,
-} from "firebase/firestore"
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore"
 import { db } from "../../firebaseConfig"
 
 const Form = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
   const [userData, setUserData] = useState({ name: "", phone: "", email: "" })
 
   const total = getTotalPrice()
+  
+  const handleChange = (event) => {
+
+    const name = event.target.name
+    const value = event.target.value
+    setUserData(data => ({...data, [name]: value}))
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -36,37 +37,66 @@ const Form = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
     clearCart()
   }
 
-  return (
+   return (
     <div>
       <form action="" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Ingrese su nombre"
-          name="name"
-          value={userData.name}
-          onChange={(event) =>
-            setUserData({ ...userData, name: event.target.value })
-          }
-        />
-        <input
-          type="text"
-          placeholder="Ingrese su telefono"
-          name="phone"
-          onChange={(event) =>
-            setUserData({ ...userData, phone: event.target.value })
-          }
-          value={userData.phone}
-        />
-        <input
-          type="email"
-          placeholder="Ingrese su email"
-          name="email"
-          onChange={(event) =>
-            setUserData({ ...userData, email: event.target.value })
-          }
-          value={userData.email}
-        />
-        <button type="submit">Finalizar compra</button>
+        <div className="row mb-1">
+          <label className="col-sm-4 col-form-label">Nombre</label>
+          <div className="col-sm-8">
+            <input
+              required
+              className="form-control"
+              type="text"
+              placeholder="Nombre"
+              name="name"
+              value={userData.name}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <div className="row mb-1">
+          <label className="col-sm-4 col-form-label">Telefono</label>
+          <div className="col-sm-8">
+            <input
+              required
+              className="form-control"
+              type="text"
+              placeholder="Codigo de area + numero"
+              name="phone"
+              value={userData.phone}
+              onChange={handleChange}
+            />
+          </div>
+        </div>   
+        <div className="row mb-1">
+          <label className="col-sm-4 col-form-label">E-mail</label>
+          <div className="col-sm-8">
+            <input
+              required
+              className="form-control"
+              type="email"
+              placeholder="xxx@xxx.com"
+              name="email"
+              value={userData.email}
+              onChange={handleChange}
+            />
+          </div>
+        </div>  
+        <div className="row mb-1">
+          <label className="col-sm-4 col-form-label">Confirma tu e-mail</label>
+          <div className="col-sm-8">
+            <input
+              required
+              className="form-control"
+              type="email"
+              placeholder="xxx@xxx.com"
+              name="confirmEmail"
+              value={userData.confirmEmail}
+              onChange={handleChange}
+            />
+          </div>
+        </div>    
+        <button type="submit" className="btn btn-success float-end px-3 mt-1">Confirmar compra</button>
       </form>
     </div>
   )

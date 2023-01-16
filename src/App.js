@@ -9,6 +9,7 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import NavBar from './components/NavBar/NavBar'
 
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -25,9 +26,9 @@ function App() {
 
           <Route path="/checkout" element={<Form />} />
 
-          <Route path="/:sale" element={<ItemListContainer />} />
-
           <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
+
+          <Route path="/:sale" element={<ItemListContainer />} />
 
           <Route path="*" element={<Error />} />
 

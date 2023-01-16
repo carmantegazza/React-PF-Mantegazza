@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState } from "react"
 
 export const CartContext = createContext()
 
@@ -33,9 +33,7 @@ const CartContextProvider = ({ children }) => {
 
   const clearCart = ()=>{
 
-setCart([])
-
-
+    setCart([])
   }
 
   const getQuantityById = ( id )=>{
@@ -77,7 +75,7 @@ setCart([])
   
     let cartIsEmpty
   
-    if (cart.length == 0) {
+    if (cart.length === 0) {
       cartIsEmpty = true
     }
   

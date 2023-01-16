@@ -1,30 +1,31 @@
 import { useContext, useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 import { CartContext } from "../../context/CartContext"
 
 import { collection, doc, getDoc } from "firebase/firestore"
 import { db } from "../../firebaseConfig"
 
-import CartItem from "../CartItem/CartItem"
 import CartButtonClearCart from "../CartButtonClearCart/CartButtonClearCart"
 import CartButtonCheckout from "../CartButtonCheckout/CartButtonCheckout"
-import CartButtonKeepShopping from "../CartButtonKeepShopping/CartButtonKeepShopping"
-import CartTotalsTable from "../CartTotalsTable/CartTotalsTable"
-import Error from "../Error/Error"
+import CartButtonToShopping from "../CartButtonToShopping/CartButtonToShopping"
+import CartDetail from "../CartDetail/CartDetail"
 import Form from "../Form/Form"
-import Orders from "../Orders/Orders"
 
 import "../ItemCount/ItemCount.css"
 import OrderConfirmation from "../OrderConfirmation/OrderConfirmation"
 
 const Cart = () => {
-  const { cart, clearCart, getItemsTotal, getTotalPrice, isCartEmpty } = useContext(CartContext)
-
+  const { cart, clearCart, getTotalPrice, isCartEmpty } = useContext(CartContext)
+  
+  const [buttonText, setButtonText] =useState('')
   const [buy, setBuy] = useState(false)
-  const [orderId, setOrderId] = useState(null)
   const [order, setOrder] = useState({})
-
+  const [orderId, setOrderId] = useState(null)
+  
   const openForm = () => setBuy(true)
+
+  useEffect( () => {
+    isCartEmpty() ? setButtonText("Empeza a comprar!") : setButtonText("Seguir comprando")
+  }, [isCartEmpty])  
 
   useEffect(() => {
 
@@ -40,32 +41,30 @@ const Cart = () => {
       })
     }
   }, [orderId])
+
+  if (orderId) {
+    return (
+      <OrderConfirmation order={order.id}/>
+    )
+  }
   
   return (
     <div className="container my-3">
-        {orderId ? <OrderConfirmation order={order.id}/>
-            :
-      <div className="row">
-        <ul className="list-group">
-          {cart.map((item) => (
-            <CartItem key={item.id} item={item} /> ))}                
-          {isCartEmpty() == true && <Error /> }
-        </ul>
-        {isCartEmpty() != true && <CartTotalsTable />}
-        {buy && <Form
-              cart={cart}
-              getTotalPrice={getTotalPrice}
-              setOrderId={setOrderId}
-              clearCart={clearCart}
-            />}
-      <div className="row">
-        <div className="d-grid gap-2 col-6 mx-auto">
-          <CartButtonKeepShopping />
-          {isCartEmpty() != true && <CartButtonCheckout onClick={openForm}/>}
-          {isCartEmpty() != true && <CartButtonClearCart />}  
-        </div>
-      </div>
-    </div>}
+        <CartDetail /> 
+        {buy ? <Form
+          order={order}
+          cart={cart}
+          getTotalPrice={getTotalPrice}
+          setOrderId={setOrderId}
+          clearCart={clearCart}
+        /> :
+        <div className="row">
+          <div className="d-grid gap-2 col-6 mx-auto">
+            <CartButtonToShopping text={buttonText}/>
+            {isCartEmpty() !== true && <CartButtonCheckout onClick={openForm}/>}
+            {isCartEmpty() !== true && <CartButtonClearCart />}  
+          </div>
+        </div>}
     </div>
   )
 }
