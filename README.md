@@ -2,19 +2,19 @@
 ## Proyecto de E-commerce con React Js
 
 *Tienda de Albumes de K-Pop,*
-*+organizados por las categorias de busqueda mas usuales del rubro:*
+*organizados segun categorias de busqueda mas utilizadas del rubro:*
 *(Girl Groups, Boy Groups, Solistas)*
 
 Autor: Carla Mantegazza
 
 ***
 ### Notas para el corrector
+### Site
+[] (https://replaystore.netlify.app)
+
 #### Navegabilidad
 - ![2da PreEntrega](navegabilidadCarMantegazza.gif)
 - ![Proyecto Final](navegabilidadCarMantegazza.gif)
-
-### Pagina
-[] (https://replaystore.netlify.app)
 
 #### Librerias
 - [react-icons] (https://react-icons.github.io/react-icons)
