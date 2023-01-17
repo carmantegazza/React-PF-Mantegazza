@@ -11,7 +11,9 @@ Autor: Carla Mantegazza
 [En Netlify] (https://replaystore.netlify.app)
 
 #### Navegabilidad
+- 2da PreEntrega
 ![2da PreEntrega](2EnavegabilidadCarMantegazza.gif)
+- Proyecto Final
 ![Proyecto Final](PFnavegabilidadCarMantegazza.gif)
 
 #### Librerias
