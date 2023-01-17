@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { SpinnerCircularSplit } from 'spinners-react';
-import { getDoc, doc, collection, query, where} from "firebase/firestore"
+import { doc, collection, getDoc } from "firebase/firestore"
 import { db } from '../../firebaseConfig'
 
 import ItemDetail from "../ItemDetail/ItemDetail"
@@ -30,7 +30,7 @@ const ItemDetailContainer = () => {
 
     setTimeout(() => {
       setIsLoading(false)
-    }, 1000);
+    }, 1200);
     
   }, [id])
 

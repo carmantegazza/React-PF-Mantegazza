@@ -8,7 +8,7 @@ const ItemCount = ({ stock, initial = 0, onAdd, name}) => {
   const [disabled, setDisabled] = useState()
 
   useEffect ( () => {
-    stock == 0 || counter == 0 ? setDisabled(true) : setDisabled(false) }, [stock, counter, initial])
+    stock === 0 || counter === 0 ? setDisabled(true) : setDisabled(false) }, [stock, counter, initial])
 
   useEffect ( () => {
     setCounter(initial) }, [initial])
