@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
-import { FaTrash, FaTimes } from "react-icons/fa"
-import { ToastContainer, toast, Flip } from 'react-toastify';
+import { FaTimes, FaTrash } from "react-icons/fa"
+import { Flip, toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const CartItem = ({ item }) => {

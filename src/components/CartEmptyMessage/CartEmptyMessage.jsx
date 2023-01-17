@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { SpinnerCircularSplit } from 'spinners-react';
-import CartButtonKeepShopping from "../CartButtonToShopping/CartButtonToShopping";
 
 const CartEmptyMessage = () => {
 
