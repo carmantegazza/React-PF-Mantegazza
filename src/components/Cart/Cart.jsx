@@ -21,9 +21,11 @@ const Cart = () => {
   const [orderId, setOrderId] = useState(null)
   
   const openForm = () => setBuy(true)
-
+  
   useEffect( () => {
     isCartEmpty ? setButtonText("Empeza a comprar!") : setButtonText("Seguir comprando")
+    isCartEmpty && setBuy(false)
+
   }, [isCartEmpty])  
 
   useEffect(() => {
