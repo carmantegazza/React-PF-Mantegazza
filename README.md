@@ -13,8 +13,8 @@ Autor: Carla Mantegazza
 [] (https://replaystore.netlify.app)
 
 #### Navegabilidad
-- ![2da PreEntrega](navegabilidadCarMantegazza.gif)
-- ![Proyecto Final](navegabilidadCarMantegazza.gif)
+- ![2da PreEntrega](2EnavegabilidadCarMantegazza.gif)
+- ![Proyecto Final](PFnavegabilidadCarMantegazza.gif)
 
 #### Librerias
 - [react-icons] (https://react-icons.github.io/react-icons)

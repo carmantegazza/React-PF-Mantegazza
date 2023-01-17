@@ -6,7 +6,7 @@ import "../../styles/styles.css"
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-md px-3 py-1 align-bottom bgColor">
+    <nav className="navbar navbar-expand-md px-3 py-1 align-bottom sticky-top bgColor">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           <img src="https://res.cloudinary.com/dx8uk8mjq/image/upload/v1669349897/Replay_Logo_2_z7voxh.png" alt="Logo" className="logo"/>

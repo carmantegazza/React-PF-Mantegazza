@@ -4,6 +4,7 @@ import { SpinnerCircularSplit } from 'spinners-react';
 import { getDocs, collection, query, where } from "firebase/firestore"
 import { db } from "../../firebaseConfig"
 
+import Error from "../Error/Error";
 import ItemList from "../ItemList/ItemList"
 
 const ItemListContainer = () => {
@@ -16,7 +17,7 @@ const ItemListContainer = () => {
 
     const itemCollection = collection( db, "products" )
 
-    if( categoryName ){
+    if (categoryName){
       const q = query( itemCollection, where( "category" , "==" , categoryName ) )
       getDocs(q)
       .then( (res) => {
@@ -27,13 +28,11 @@ const ItemListContainer = () => {
             id: product.id
           }
         } )
-
         setItems(products)
       })
       .catch( (err) => console.log(err))
 
-    }else{
-
+    } else {
       getDocs(itemCollection)
       .then( (res) => {
         const products = res.docs.map( product => { 
@@ -51,12 +50,12 @@ const ItemListContainer = () => {
 
     setTimeout( ()=>{
       setIsLoading(false)
-    }, 1500)
+    }, 500)
 
   }, [categoryName])
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid mb-5">
       { isLoading ?
       <div className="row justify-content-around mt-5">
         <SpinnerCircularSplit 
@@ -65,8 +64,10 @@ const ItemListContainer = () => {
           speed={100} 
           color="#cb6ce6" 
           secondaryColor="#49dfcd" />
-      </div> :       
-      <ItemList items={items} /> 
+      </div> : 
+      <div className="row justify-content-around mt-5"> 
+        {items.length === 0 ? <Error /> : <ItemList items={items} />}
+      </div>   
       }
     </div>
   )
