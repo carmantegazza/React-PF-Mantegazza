@@ -1,29 +1,27 @@
 # REPLAY K-POP STORE
 ## Proyecto de E-commerce con React Js
 
-*Tienda de Albumes de K-Pop,*
-*organizados segun categorias de busqueda mas utilizadas del rubro:*
-*(Girl Groups, Boy Groups, Solistas)*
+*Tienda de Albumes de K-Pop, organizados segun categorias (Girl Groups, Boy Groups, Solistas)*
 
 Autor: Carla Mantegazza
 
 ***
 ### Notas para el corrector
-### Site
-[] (https://replaystore.netlify.app)
+#### Site
+[En Netlify] (https://replaystore.netlify.app)
 
 #### Navegabilidad
-- ![2da PreEntrega](2EnavegabilidadCarMantegazza.gif)
-- ![Proyecto Final](PFnavegabilidadCarMantegazza.gif)
+![2da PreEntrega](2EnavegabilidadCarMantegazza.gif)
+![Proyecto Final](PFnavegabilidadCarMantegazza.gif)
 
 #### Librerias
 - [react-icons] (https://react-icons.github.io/react-icons)
-Usada para personalizar alertas e iconos.
+<p>Usada para personalizar alertas e iconos.</p>
 
 - [react-toastify] (https://fkhadra.github.io/react-toastify/introduction/)
-Usada para crear toast ante eventos del usuario (agregar item, vaciar carrito, etc).
+<p>Usada para crear toast ante eventos del usuario (agregar item, vaciar carrito, etc).</p>
 
 - [spinners-react] (https://www.npmjs.com/package/spinners-react)
-Usada para pantallas de carga.
+<p>Usada para pantallas de carga.</p>
 
 
