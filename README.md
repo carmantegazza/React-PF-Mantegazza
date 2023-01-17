@@ -9,8 +9,9 @@ Autor: Carla Mantegazza
 
 ***
 ### Notas para el corrector
-#### Navegabilidad (2da PreEntrega)
-![](navegabilidadCarMantegazza.gif)
+#### Navegabilidad
+- ![2da PreEntrega](navegabilidadCarMantegazza.gif)
+- ![Proyecto Final](navegabilidadCarMantegazza.gif)
 
 ### Pagina
 [] (https://replaystore.netlify.app)

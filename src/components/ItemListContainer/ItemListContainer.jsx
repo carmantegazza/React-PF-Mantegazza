@@ -51,7 +51,7 @@ const ItemListContainer = () => {
 
     setTimeout( ()=>{
       setIsLoading(false)
-    }, 500)
+    }, 1500)
 
   }, [categoryName])
 

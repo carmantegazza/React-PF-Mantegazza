@@ -9,12 +9,11 @@ import ItemDetail from "../ItemDetail/ItemDetail"
 const ItemDetailContainer = () => {
 
   const [product, setProduct] = useState({})
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const {id} = useParams()
 
   useEffect( ()=>{
-    setIsLoading(true)
 
     const itemCollection = collection(db, "products")
     const ref = doc(itemCollection, id)
@@ -30,8 +29,8 @@ const ItemDetailContainer = () => {
 
     setTimeout(() => {
       setIsLoading(false)
-    }, 1200);
-    
+    }, 500);
+
   }, [id])
 
   return (
