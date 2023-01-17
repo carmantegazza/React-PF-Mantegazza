@@ -12,7 +12,7 @@ const Item = ({element}) => {
 				{element.sale === true && <ItemSaleBadge />}
 				<img src={element.img} alt={element.description} className="card-img-top" />
 				<div className="card-body">
-					<h4>{element.artist}</h4>	
+					<h5>{element.artist}</h5>	
 					<h3 className="titleText">{element.name}</h3>				
 					<h5>${element.price}</h5>
 					<span className="badge float-end bgBrandColor2" ><Link to={`/itemDetail/${element.id}`}>+ info</Link></span>

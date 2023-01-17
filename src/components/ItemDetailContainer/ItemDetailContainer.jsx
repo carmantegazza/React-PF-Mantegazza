@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { SpinnerCircularSplit } from 'spinners-react';
 import { doc, collection, getDoc } from "firebase/firestore"
 import { db } from '../../firebaseConfig'
 
@@ -9,7 +8,6 @@ import ItemDetail from "../ItemDetail/ItemDetail"
 const ItemDetailContainer = () => {
 
   const [product, setProduct] = useState({})
-  const [isLoading, setIsLoading] = useState(true)
 
   const {id} = useParams()
 
@@ -27,24 +25,11 @@ const ItemDetailContainer = () => {
       )
     })
 
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 500);
-
   }, [id])
 
   return (
     <div className="row justify-content-center mt-1">
-      {isLoading ?
-      <div className="row justify-content-around mt-5">
-        <SpinnerCircularSplit 
-          size={70} 
-          thickness={180} 
-          speed={100} 
-          color="#cb6ce6" 
-          secondaryColor="#49dfcd" />
-      </div> :
-      <ItemDetail product={ product } />}
+      <ItemDetail product={ product } />
     </div>
   )
 }

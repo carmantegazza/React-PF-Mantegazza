@@ -8,13 +8,14 @@ Autor: Carla Mantegazza
 ***
 ### Notas para el corrector
 #### Site
-[En Netlify] (https://replaystore.netlify.app)
+[replaystore.netlify.app](https://replaystore.netlify.app)
 
 #### Navegabilidad
 - 2da PreEntrega
-![2da PreEntrega](2EnavegabilidadCarMantegazza.gif)
+![2da PreEntrega](navegabilidad2daEntrega.gif)
+
 - Proyecto Final
-![Proyecto Final](PFnavegabilidadCarMantegazza.gif)
+![Proyecto Final](navegabilidadProyectoFinal.gif)
 
 #### Librerias
 - [react-icons] (https://react-icons.github.io/react-icons)
